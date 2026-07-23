@@ -7,8 +7,8 @@
   <MyIP/>
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
-  <Support>https://git.slummybell.com/slummybell/finTrackr/issues</Support>
-  <Project>https://git.slummybell.com/slummybell/finTrackr</Project>
+  <Support>https://github.com/Slummybell23/FinTrackr/issues</Support>
+  <Project>https://github.com/Slummybell23/FinTrackr</Project>
   <Overview>
     FinTrackr is a self-hosted budgeting and expense-tracking PWA. Entries are
     written by hand or imported from bank CSV exports and reviewed before they
@@ -22,8 +22,8 @@
   </Overview>
   <Category>Productivity: Tools:</Category>
   <WebUI>http://[IP]:[PORT:8080]</WebUI>
-  <TemplateURL>https://git.slummybell.com/slummybell/finTrackr/raw/branch/main/fintrackr.xml</TemplateURL>
-  <Icon>https://git.slummybell.com/slummybell/finTrackr/raw/branch/main/client/public/pwa-512x512.png</Icon>
+  <TemplateURL>https://raw.githubusercontent.com/Slummybell23/FinTrackr/main/fintrackr.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/Slummybell23/FinTrackr/main/client/public/pwa-512x512.png</Icon>
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
