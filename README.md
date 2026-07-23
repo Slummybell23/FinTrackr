@@ -123,36 +123,6 @@ rate limiter sees real client IPs. Point the proxy at port 8080; no further
 configuration is needed. TLS termination is the proxy's job — the container
 itself serves plain HTTP.
 
-## Unraid
-
-A Community Applications-format template is provided at
-[fintrackr.xml](fintrackr.xml) (port 8080, appdata at
-`/mnt/user/appdata/fintrackr`).
-
-To install before it is listed in CA:
-
-1. Copy the template to the flash drive:
-
-   ```sh
-   cp fintrackr.xml /boot/config/plugins/dockerMan/templates-user/my-fintrackr.xml
-   ```
-
-2. **Docker → Add Container**, select `fintrackr` from the Template dropdown,
-   adjust the port or appdata path if needed, and Apply.
-
-**Troubleshooting "no connection":** the container listens on port 8080 over
-plain HTTP. Verify the port mapping's *container* side is 8080, test with
-`docker exec fintrackr curl -sf http://localhost:8080/api/health`, browse with
-`http://` (not `https://`), and on a custom network (br0) use the container's
-own IP.
-
-To publish to the Community Applications store: push the image to a public
-registry, host the template XML in a public GitHub repository with
-[ca_profile.xml](ca_profile.xml) at the repo root (CA reads it as the
-publisher profile for the whole account: icon, bio, links, and the maintainer
-page lists every app published under it), and submit the repository in the
-[CA template-repository thread](https://forums.unraid.net/topic/87144-ca-application-templates/).
-
 ## Security & multi-user
 
 - Sessions are HTTP-only cookies via ASP.NET Core Identity (hashed passwords,
