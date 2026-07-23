@@ -1,0 +1,275 @@
+@import "tailwindcss";
+
+/*
+ * Papers & inks, from the Ledger design doc.
+ * Paper is chosen with data-paper on <html>; accent ink with data-ink.
+ */
+:root {
+  --paper: #faf8f3;
+  --paper-raised: #f3f0e8;
+  --paper-edge: #e0dacc;
+  --ink: #1c1a16;
+  --ink-mute: #5a5548;
+  --ink-faint: #8a8478;
+  --accent: #2a5fb8;
+  color-scheme: light;
+  accent-color: var(--accent);
+}
+
+[data-paper="linen"] {
+  --paper: #f6f7f9;
+  --paper-raised: #eef0f3;
+  --paper-edge: #e4e7ec;
+  --ink: #14171c;
+  --ink-mute: #4f545c;
+  --ink-faint: #7c828c;
+}
+
+[data-paper="sage"] {
+  --paper: #f1f3ec;
+  --paper-raised: #e9ece2;
+  --paper-edge: #dfe4d9;
+  --ink: #1b201a;
+  --ink-mute: #4f584d;
+  --ink-faint: #7e877a;
+}
+
+[data-paper="parchment"] {
+  --paper: #f7efe1;
+  --paper-raised: #f1e7d3;
+  --paper-edge: #e3d5b8;
+  --ink: #221d12;
+  --ink-mute: #5c5138;
+  --ink-faint: #8d8163;
+}
+
+[data-paper="rose"] {
+  --paper: #f8f1ef;
+  --paper-raised: #f3e9e6;
+  --paper-edge: #e6d5d0;
+  --ink: #211917;
+  --ink-mute: #5d4a44;
+  --ink-faint: #8f7a73;
+}
+
+[data-paper="mist"] {
+  --paper: #f2f3f7;
+  --paper-raised: #eaecf2;
+  --paper-edge: #dcdfe9;
+  --ink: #171a22;
+  --ink-mute: #4f5461;
+  --ink-faint: #7d8292;
+}
+
+[data-paper="ink"] {
+  --paper: #15140f;
+  --paper-raised: #211f19;
+  --paper-edge: #3a372e;
+  --ink: #faf8f3;
+  --ink-mute: #b5aea0;
+  --ink-faint: #8a8478;
+}
+
+[data-paper="slate"] {
+  --paper: #171a1e;
+  --paper-raised: #22262c;
+  --paper-edge: #3a404a;
+  --ink: #f2f4f7;
+  --ink-mute: #aeb6c2;
+  --ink-faint: #7e8794;
+}
+
+[data-paper="pine"] {
+  --paper: #131a16;
+  --paper-raised: #1d2621;
+  --paper-edge: #33403a;
+  --ink: #eef4f0;
+  --ink-mute: #a8bcb0;
+  --ink-faint: #7d9187;
+}
+
+[data-paper="espresso"] {
+  --paper: #1a1512;
+  --paper-raised: #262019;
+  --paper-edge: #40372e;
+  --ink: #f6f0e9;
+  --ink-mute: #bfae9e;
+  --ink-faint: #8d7f70;
+}
+
+/* theme.ts stamps data-shade from the resolved paper; native controls follow. */
+[data-shade="dark"] {
+  color-scheme: dark;
+}
+
+[data-ink="green"] {
+  --accent: #47714b;
+}
+
+[data-ink="clay"] {
+  --accent: #a8593a;
+}
+
+[data-ink="plum"] {
+  --accent: #7b4a6e;
+}
+
+[data-ink="marigold"] {
+  --accent: #8a6a1b;
+}
+
+[data-ink="teal"] {
+  --accent: #226d6a;
+}
+
+[data-ink="indigo"] {
+  --accent: #45499a;
+}
+
+[data-ink="copper"] {
+  --accent: #9c5b28;
+}
+
+/* Accents lighten on the dark papers so they read as ink, not glare. */
+[data-shade="dark"][data-ink="green"] {
+  --accent: #7ea883;
+}
+
+[data-shade="dark"][data-ink="clay"] {
+  --accent: #cf8a6b;
+}
+
+[data-shade="dark"][data-ink="plum"] {
+  --accent: #b58bab;
+}
+
+[data-shade="dark"][data-ink="marigold"] {
+  --accent: #c9a84c;
+}
+
+[data-shade="dark"][data-ink="teal"] {
+  --accent: #6fb3ae;
+}
+
+[data-shade="dark"][data-ink="indigo"] {
+  --accent: #9a9fd8;
+}
+
+[data-shade="dark"][data-ink="copper"] {
+  --accent: #d19a6b;
+}
+
+[data-shade="dark"]:not([data-ink]),
+[data-shade="dark"][data-ink="blue"] {
+  --accent: #7d9fd6;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-raised: var(--paper-raised);
+  --color-edge: var(--paper-edge);
+  --color-ink: var(--ink);
+  --color-ink-mute: var(--ink-mute);
+  --color-ink-faint: var(--ink-faint);
+  --color-accent: var(--accent);
+  --font-serif: "Newsreader", ui-serif, Georgia, serif;
+  --font-sans: ui-sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+html {
+  background: var(--paper);
+}
+
+body {
+  @apply bg-paper text-ink font-sans antialiased;
+  min-height: 100dvh;
+  /* Installed-PWA niceties: no tap flash, no double-tap zoom, no rubber-band peek. */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  overscroll-behavior-y: none;
+  /* Amounts line up in lists; Newsreader and Helvetica both carry tabular figures. */
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/*
+ * The editorial primitives every screen is set with: micro-labels over
+ * content, hairline-bordered fields on raised paper, ink-block buttons,
+ * quiet outline buttons, chips for choices, and raised cards.
+ */
+@layer components {
+  .label-micro {
+    @apply text-[11px] uppercase tracking-widest text-ink-faint;
+  }
+
+  .field {
+    @apply w-full rounded-lg border border-edge bg-raised px-3 py-2.5 text-ink placeholder:text-ink-faint focus:border-accent focus:outline-none;
+  }
+
+  .field-sm {
+    @apply rounded-lg border border-edge bg-raised px-2 py-1.5 text-sm text-ink placeholder:text-ink-faint focus:border-accent focus:outline-none;
+  }
+
+  .btn-ink {
+    @apply rounded-lg bg-ink text-paper disabled:opacity-50;
+  }
+
+  .btn-quiet {
+    @apply rounded-lg border border-edge text-ink-mute disabled:opacity-40;
+  }
+
+  .chip {
+    @apply rounded-full border px-4 py-2 text-sm;
+  }
+
+  .card {
+    @apply rounded-xl border border-edge bg-raised;
+  }
+
+  /* iOS zooms the page when a focused input is under 16px; keep fields at 1rem on touch. */
+  @media (pointer: coarse) {
+    .field,
+    .field-sm {
+      font-size: 1rem;
+    }
+  }
+}
+
+/* The printed page: ink on white whatever the screen theme. !important also
+   outbids the inline --accent a custom ink sets on the root element. */
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  html {
+    --paper: #ffffff !important;
+    --paper-raised: #ffffff !important;
+    --paper-edge: #d8d3c6 !important;
+    --ink: #191713 !important;
+    --ink-mute: #4a463c !important;
+    --ink-faint: #7a7466 !important;
+    --accent: #191713 !important;
+  }
+
+  body {
+    min-height: auto;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-avoid-break {
+    break-inside: avoid;
+  }
+}
