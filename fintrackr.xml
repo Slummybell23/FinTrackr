@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>finTrackr</Name>
+  <Repository>slummybell/fintrackr:latest</Repository>
+  <Registry>https://hub.docker.com/r/slummybell/fintrackr/</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://git.slummybell.com/slummybell/finTrackr/issues</Support>
+  <Project>https://git.slummybell.com/slummybell/finTrackr</Project>
+  <Overview>
+    FinTrackr is a self-hosted budgeting and expense-tracking PWA. Entries are
+    written by hand or imported from bank CSV exports and reviewed before they
+    land; there are no bank integrations by design. Includes monthly budget
+    lines with pacing projections and daily allowances, recurring items with a
+    subscription cost audit, savings buckets and sinking funds, debt payoff
+    tracking, spending insights and charts, vendor memory with aliases, tags,
+    receipts, light and dark themes, and multi-user accounts with per-user data
+    isolation. Installable as a PWA with offline entry. All data lives in a
+    single SQLite file under /data; back it up by copying the file.
+  </Overview>
+  <Category>Productivity: Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8080]</WebUI>
+  <TemplateURL>https://git.slummybell.com/slummybell/finTrackr/raw/branch/main/fintrackr.xml</TemplateURL>
+  <Icon>https://git.slummybell.com/slummybell/finTrackr/raw/branch/main/client/public/pwa-512x512.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="WebUI Port" Target="8080" Default="8080" Mode="tcp"
+          Description="Host port for the web app and API."
+          Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+  <Config Name="Data" Target="/data" Default="/mnt/user/appdata/fintrackr" Mode="rw"
+          Description="Where the SQLite database (fintrackr.db) is stored. Back this folder up."
+          Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/fintrackr</Config>
+  <Config Name="Timezone" Target="TZ" Default="America/New_York" Mode=""
+          Description="Container timezone, used for date handling in logs."
+          Type="Variable" Display="advanced" Required="false" Mask="false">America/New_York</Config>
+</Container>

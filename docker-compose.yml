@@ -1,0 +1,11 @@
+services:
+  fintrackr:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - fintrackr-data:/data
+    restart: unless-stopped
+
+volumes:
+  fintrackr-data:

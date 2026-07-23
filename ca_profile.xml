@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Community Applications maintainer profile. One per template repository,
+  read from the repo root; CA shows it as the publisher card, and the
+  maintainer page aggregates every app published under this identity.
+  Keep it generic - it represents the account, not any single app.
+  Swap the Icon URL if the GitHub handle is not "slummybell".
+-->
+<Maintainer>
+  <Icon>https://avatars.githubusercontent.com/slummybell</Icon>
+  <Profile>Self-hosted apps and tools for the home lab, built and maintained by slummybell. Bug reports and ideas are welcome on each project's tracker.</Profile>
+  <WebPage>https://git.slummybell.com/slummybell</WebPage>
+</Maintainer>
